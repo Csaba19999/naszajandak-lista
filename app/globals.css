@@ -13,12 +13,68 @@ body {
   overflow: hidden;
 }
 
-@keyframes pulse {
+/* The cover contents drift up as the page settles. */
+@keyframes gate-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* A slow warm breath behind the gift box, so the page is never quite still. */
+@keyframes gate-glow {
   0%,
   100% {
-    opacity: 1;
+    opacity: 0.5;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.55;
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+/* Just enough movement to say "open me". */
+@keyframes gate-nudge {
+  0%,
+  88%,
+  100% {
+    transform: rotate(0deg);
+  }
+  92% {
+    transform: rotate(-4deg);
+  }
+  96% {
+    transform: rotate(4deg);
+  }
+}
+
+/* The volume notice slides in over the video, holds, then bows out. */
+@keyframes video-notice {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -14px);
+  }
+  6% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  88% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
   }
 }
